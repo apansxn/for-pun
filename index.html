@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For N'Pun</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #ffe6f2; /* สีชมพูอ่อน */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ff66b2; /* สีชมพูเข้ม */
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #555;
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background: #ff66b2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+        }
+        button:hover {
+            background: #ff4d94;
+        }
+        .big {
+            font-size: 1.2em;
+            transform: scale(1.1);
+        }
+        img {
+            width: 200px; /* กำหนดขนาดความกว้าง */
+            height: auto; /* ความสูงปรับตามความกว้าง */
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="page1">
+        <h1>For N'Pun</h1>
+        <p>Can you be my Christmas present?</p>
+        <button id="yesButton" onclick="goToNextPage()">Yes</button>
+        <button id="noButton" onclick="changeToPlease()">No</button>
+        <img id="noImage" src="" alt="No Reaction" style="display: none;">
+    </div>
+
+    <div class="container" id="page2" style="display: none;">
+        <h1>Thank you!</h1>
+        <video width="320" height="240" controls>
+            <source src="your-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p>You are the best gift ever!</p>
+    </div>
+
+    <script>
+        const yesButton = document.getElementById("yesButton");
+        const noButton = document.getElementById("noButton");
+        const page1 = document.getElementById("page1");
+        const page2 = document.getElementById("page2");
+        const noImage = document.getElementById("noImage");
+
+        // ฟังก์ชันเปลี่ยนหน้าเมื่อกด Yes
+        function goToNextPage() {
+            page1.style.display = "none";
+            page2.style.display = "block";
+        }
+
+        // ฟังก์ชันเปลี่ยน No เป็น Please และแสดงรูป
+        function changeToPlease() {
+            noButton.textContent = "Please";
+            yesButton.classList.add("big");
+            noImage.src = "no-reaction.jpg"; // ชื่อไฟล์รูปที่คุณอัปโหลด
+            noImage.style.display = "block";
+        }
+    </script>
+</body>
+</html>
